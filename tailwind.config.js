@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+const plugin = require('tailwindcss/plugin')
 module.exports = {
   content: [
     "./src/**/*.{js,jsx,ts,tsx}",
@@ -13,6 +14,7 @@ module.exports = {
       shiny: 'shimmer 6s ease infinite',
       shinyDelay: 'shimmer 7s ease infinite',
       shinyRight: 'shimmer 9s ease infinite',
+      bingo: 'slam 2s ease 1',
     },
     keyframes: {
       star: {
@@ -118,7 +120,33 @@ module.exports = {
           transform: 'scale(2.1)'
         },
       },
+      slam: {
+        '0%': {
+          opacity: '0.6',
+          transform: 'scale(2.1)'
+        },
+        '100%': {
+          opacity: '1',
+          transform: 'scale(1)'
+        },
+        
+      },
     },
   },
-  plugins: [],
+  plugins: [
+    plugin(({ matchUtilities, theme }) => {
+      matchUtilities(
+        {
+          "animation-delay": (value) => {
+            return {
+              "animation-delay": value,
+            };
+          },
+        },
+        {
+          values: theme("transitionDelay"),
+        }
+      );
+    }),
+  ],
 }

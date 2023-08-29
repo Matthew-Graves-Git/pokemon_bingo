@@ -4,6 +4,7 @@ import background from '../assets/pokeball-background.svg'
 import { dexDataMap } from '../util/dexData';
 import {BsDice4} from 'react-icons/bs'
 import Square from './Square';
+import { calcDelay } from '../util/calcDelay';
 const Board = ({options,filters}) => {
     const [squares, setSquares] = useState([]);
     const generateNum = (min,max) => {return Math.floor((Math.random() * max) + min)}
@@ -29,7 +30,6 @@ const Board = ({options,filters}) => {
                 return  filters.type.includes(dex.type1) || filters.type.includes(dex.type2)
             })
         }
-        console.log(temp)
         return temp;
     }
     const reRoll = () =>{
@@ -70,8 +70,8 @@ const Board = ({options,filters}) => {
     <main className='flex items-center lg:flex-row flex-col justify-center relative  h-full w-screen mt-2'>
         <section className='grid grid-cols-5 lg:w-[max(35%,600px)] w-[max(80%,400px)]'>
             {squares && squares.map((item,index)=>{
-                if(ref.current === index) return <Square key={index} src={item.name} base={shiny} isShiny={true} capture={options.card[index]} setCapture={options.setCatch} id={index}/>
-                return <Square key={index} src={item.name} base={base} isShiny={false} capture={options.card[index]} setCapture={options.setCatch} id={index}/>
+                if(ref.current === index) return <Square key={index} src={item.name} base={shiny} bingo={options.bingo[index]} isShiny={true} capture={options.card[index]} setCapture={options.setCatch} id={index}/>
+                return <Square key={index} src={item.name} base={base} bingo={options.bingo[index]} isShiny={false} capture={options.card[index]} setCapture={options.setCatch} delay={calcDelay(index)} id={index}/>
             })}
             
             
