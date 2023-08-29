@@ -10,6 +10,9 @@ module.exports = {
       fall: 'star 4s ease 1',
       fallRight: 'starRight 4s ease 1',
       fallLeft: 'starLeft 4s ease 1',
+      shiny: 'shimmer 6s ease infinite',
+      shinyDelay: 'shimmer 7s ease infinite',
+      shinyRight: 'shimmer 9s ease infinite',
     },
     keyframes: {
       star: {
@@ -91,8 +94,29 @@ module.exports = {
         '100%': {
           opacity: '1',
           transform: 'rotate(0deg)'
+        }, 
+      },
+      shimmer: {
+        '0%': {
+          opacity: '1',
+          transform: 'scale(2.1)'
         },
-        
+        '25%': {
+          opacity: '0.5',
+          transform: 'scale(1.5)'
+        },
+        '50%': {
+          opacity: '1',
+          transform: 'scale(2.1)'
+        },
+        '75%': {
+          opacity: '0.5',
+          transform: 'scale(1.5)'
+        },
+        '100%': {
+          opacity: '1',
+          transform: 'scale(2.1)'
+        },
       },
     },
   },

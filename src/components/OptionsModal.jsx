@@ -82,7 +82,7 @@ const OptionsModal = ({
             })}
           </select>
           </div>
-          <AiOutlineDown className="absolute bottom-3 left-24" size={14}/>
+          <AiOutlineDown className="absolute bottom-24 left-24" size={14}/>
           <label className="border-b-2 border-red-400 font-medium w-fit" for="encounter">Encounter</label>
           <div className="flex justify-between" onChange={e=>filterEdit.setEncounter(e.target.value)}>
           <input type="range" id="encounter" name="encounter" min="1" max="100"></input>
