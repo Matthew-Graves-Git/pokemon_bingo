@@ -1,5 +1,3 @@
-import logo from './logo.svg';
-import { encounterData } from './util/encounterData';
 import './App.css';
 import Game from './components/Game';
 

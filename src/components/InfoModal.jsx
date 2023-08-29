@@ -1,6 +1,5 @@
 import {useEffect, useRef } from "react";
-import {icons} from '../util/iconData';
-import {AiOutlineClose, AiOutlineDown} from 'react-icons/ai'
+import {AiOutlineClose} from 'react-icons/ai'
 
 
 const isClickInsideRectangle = (e, element) => {
