@@ -5,13 +5,14 @@ import Navbar from './Navbar';
 
 
 const Game = () => {
-    const socket = useMemo(()=>new WebSocket("ws://192.168.1.65:443"),[]);
+    const socket = useMemo(()=>new WebSocket("ws://192.168.1.228:443"),[]);
     const [card, setCard] = useState([]);
     const [playerCards, setPlayerCards] = useState({});
     const [version, setVersion] = useState("Violet");
-    const [encounter, setEncounter] = useState(-1);
-    const [type, setType] = useState('');
+    const [encounter, setEncounter] = useState(100);
+    const [type, setType] = useState(null);
     const [area, setArea] = useState('');
+    const [shiny, setShiny] = useState(128);
 
     const filterData = {version,encounter,type,area}
     const filterEdit = {setVersion,setEncounter,setType,setArea}
@@ -24,33 +25,12 @@ const Game = () => {
         if(socket.readyState)socket.send(temp)
         setCard(temp)
     }
+
     const setCatch = (state,index) => {
         const temp = [...card]
         temp[index] = state
         socket.send(temp)
         setCard(temp)
-    }
-    // const msg = {
-    //     type: "message",
-    //     text: document.getElementById("text").value,
-    //     id: clientID,
-    //     date: Date.now(),
-    // };
-
-    // Connection opened
-    // socket.addEventListener("open", (event) => {
-    // console.log(event);
-    // socket.send("Hello Server!");
-    // });
-
-    // socket.onopen = (event) =>{
-    //     console.log("sent");
-    //     socket.send("Hello Server!");
-    // }
-
-    // Listen for messages
-    const updatePlayerCards = (data) => {
-
     }
     
     useEffect(() => {
@@ -74,7 +54,7 @@ const Game = () => {
         }); 
     
     }, [socket]);
-    const cache = {card,setCatch,resetCard}
+    const cache = {card,setCatch,resetCard,shiny}
 
     return ( 
         <div>

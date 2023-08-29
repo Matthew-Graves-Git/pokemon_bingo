@@ -5,8 +5,16 @@
 @tailwind utilities;
 
 @layer base {
-    html{
+    html,body{
         font-family: 'Raleway', sans-serif;
         overflow-x: hidden;
+        max-width: 100vw;
     }
+
+}
+@layer components{
+    label:has(input:checked) {
+        @apply border-2 border-gray-600
+    }
+
 }
