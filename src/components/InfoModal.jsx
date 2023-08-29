@@ -1,4 +1,6 @@
-import { MouseEvent, useEffect, useRef } from "react";
+import {useEffect, useRef } from "react";
+import {icons} from '../util/iconData';
+import {AiOutlineClose, AiOutlineDown} from 'react-icons/ai'
 
 
 const isClickInsideRectangle = (e, element) => {
@@ -13,11 +15,11 @@ const isClickInsideRectangle = (e, element) => {
 };
 
 
-const OptionsModal = ({
+
+const InfoModal = ({
   title,
   isOpened,
   onClose,
-  children,
 }) => {
   const ref = useRef(null);
 
@@ -29,10 +31,6 @@ const OptionsModal = ({
     }
   }, [isOpened]);
 
-  const proceedAndClose = () => {
-    onClose();
-  };
-
   return (
     <dialog
       ref={ref}
@@ -42,16 +40,25 @@ const OptionsModal = ({
       }
       className="w-96 rounded border-1 border-gray-100 backdrop-contrast-50"
     >
-      <h3>{title}</h3>
+      <h3 className="text-xl font-bold w-[7ch] ml-2 mt-2 border-b-2 border-red-400">{title}</h3>
+      
+      <div className="flex flex-col gap-5 mt-5 ml-2">
+        <p className="font-semibold text-xl w-fit">
+          Welcome to Pokemon Bingo!
+        </p>
+        <p className="font-medium w-fit mb-2">
+          Pokemon Bingo is a game where you and your friends compete 
+          to see who can catch all the pokemon on their bingo card first.
+          To begin first press the red reroll button located near the bottom of the Board.
+          Additionally, You can filter the pokemon you encounter by game version, typing,
+          and encounter rate by clicking the options menu.
 
-      {children}
 
-      <div className="flex gap-5">
-        <button onClick={proceedAndClose}>Proceed</button>
-        <button onClick={onClose}>Close</button>
+        </p>
+        <button className="absolute top-2 right-2" onClick={onClose}><AiOutlineClose size={20}/></button>
       </div>
     </dialog>
   );
 };
 
-export default OptionsModal;
+export default InfoModal;

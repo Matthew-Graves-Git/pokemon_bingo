@@ -56,7 +56,7 @@ const OptionsModal = ({
       }
       className="w-96 rounded border-1 border-gray-100 backdrop-contrast-50"
     >
-      <h3 className="text-xl font-bold w-[7ch] ml-2 border-b-2 border-red-400">{title}</h3>
+      <h3 className="text-xl font-bold w-[7ch] ml-2 mt-2 border-b-2 border-red-400">{title}</h3>
       
       <div className="flex gap-5 mt-5 ml-2">
         <form className="flex flex-col gap-3 mb-2" >
@@ -89,7 +89,7 @@ const OptionsModal = ({
           <input className="border border-gray-400 rounded-lg w-fit pl-2 font-medium" type="number" value={filterData.encounter} min="1" max="100"></input>
           </div>
         </form>
-        <button className="absolute top-1 right-1" onClick={onClose}><AiOutlineClose size={20}/></button>
+        <button className="absolute top-2 right-2" onClick={onClose}><AiOutlineClose size={20}/></button>
       </div>
     </dialog>
   );
