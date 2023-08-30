@@ -12,10 +12,10 @@ const Navbar = ({filterData,filterEdit}) => {
         <nav className="flex flex-col justify-center items-center z-10 w-full h-full text-white bg-gradient-to-r from-[#e6e1c4] to-[#f4f0db] px-4 ">
             <h1 className="text-4xl lg:text-6xl border-b-2 text-gray-500 border-red-400 font-semibold">Pokemon Bingo</h1>
             <ul className="flex items-center justify-start mt-1 gap-2">
-                <li className="cursor-pointer w-full p-1 bg-gray-500 rounded-full" onClick={()=>{setOptions(true)}}>
+                <li className="cursor-pointer w-full hover:scale-105 duration-200 p-1 bg-gray-500 rounded-full" onClick={()=>{setOptions(true)}}>
                     <BsFillGearFill size={20}/>
                 </li>
-                <li className="cursor-pointer w-full p-1 bg-gray-500 rounded-full" onClick={()=>{setInfo(true)}}>
+                <li className="cursor-pointer w-full p-1 hover:scale-105 duration-200 bg-gray-500 rounded-full" onClick={()=>{setInfo(true)}}>
                     <BsQuestionCircleFill size={20}/>
                 </li>
             </ul>

@@ -79,7 +79,7 @@ const Board = ({options,filters}) => {
         <img className='absolute -z-10 -right-1/4 bottom-0 opacity-10 h-2/3 w-2/3 rotate-12' src={background} alt="Background"/>
         <button className='fade-left w-fit h-fit lg:absolute xl:right-[22%] lg:right-[15%] bottom-0 right-4 p-2 my-3 
                             flex items-center rounded-full
-                            text-white
+                            text-white hover:scale-105 duration-200
                             bg-red-400 cursor-pointer' onClick={()=>animateReRoll()}><BsDice4 size={30}/></button>
     </main>
     );
