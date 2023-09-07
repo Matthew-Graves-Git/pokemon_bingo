@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { encounterData } from '../util/encounterData';
 import background from '../assets/pokeball-background.svg'
+import naranja from '../assets/naranja.png';
+import naranjaFloor from '../assets/naranjaFloor.png'
 import { dexDataMap } from '../util/dexData';
 import {BsDice4} from 'react-icons/bs'
 import Square from './Square';
@@ -67,7 +69,8 @@ const Board = ({options,filters}) => {
          reRoll()
     }, []);
     return (
-    <main className='flex items-center lg:flex-row flex-col justify-center relative  h-full w-screen mt-2'>
+    <main className='flex items-center lg:flex-row flex-col justify-center  relative  h-full w-screen mt-2'>
+        
         <section className='grid grid-cols-5 lg:w-[max(35%,600px)] w-[max(80%,400px)]'>
             {squares && squares.map((item,index)=>{
                 if(ref.current === index) return <Square key={index} src={item.name} base={shiny} bingo={options.bingo[index]} isShiny={true} capture={options.card[index]} setCapture={options.setCatch} id={index}/>
@@ -76,8 +79,9 @@ const Board = ({options,filters}) => {
             
             
         </section>
+        <img className='absolute -z-10 -left-1/4 bottom-0 opacity-10 h-2/3 w-2/3 rotate-12 hidden lg:flex' src={background} alt="Background"/>
         <img className='absolute -z-10 -right-1/4 bottom-0 opacity-10 h-2/3 w-2/3 rotate-12' src={background} alt="Background"/>
-        <button className='fade-left w-fit h-fit lg:absolute xl:right-[22%] lg:right-[15%] bottom-0 right-4 p-2 my-3 
+        <button className='fade-left w-fit z-10 h-fit lg:absolute xl:right-[22%] lg:right-[15%] bottom-0 right-4 p-2 my-3 
                             flex items-center rounded-full
                             text-white hover:scale-105 duration-200
                             bg-red-400 cursor-pointer' onClick={()=>animateReRoll()}><BsDice4 size={30}/></button>

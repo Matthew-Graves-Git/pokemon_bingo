@@ -1,7 +1,7 @@
 const Sidebar = (props) => {
     const clients = Object.values(props.card)
     return ( 
-        <div className="absolute flex flex-row md:flex-col  items-center justify-center gap-2 bottom-[10%] sm:-bottom-[10%] md:bottom-0 lg:left-20 xl:left-[20%] md:left-2 md:h-full md:w-14 w-full h-14">
+        <div className="absolute flex flex-row md:flex-col  items-start  gap-2 bottom-0 lg:left-20 md:top-1/3 xl:left-[20%] md:left-2 md:h-full md:w-14 w-full h-14">
                 <h2 className="font-semibold text-xl border-b-2 border-red-400">Players</h2>
                 {
                 

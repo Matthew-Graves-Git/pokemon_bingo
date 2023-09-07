@@ -5,7 +5,7 @@ import Navbar from './Navbar';
 
 
 const Game = () => {
-    const socket = useMemo(()=>new WebSocket("ws://192.168.1.228:443"),[]);
+    const socket = useMemo(()=>new WebSocket("ws://192.168.1.65:443"),[]);
     const [card, setCard] = useState([]);
     const [bingo, setBingo] = useState([]);
     const [playerCards, setPlayerCards] = useState({});
@@ -88,7 +88,6 @@ const Game = () => {
             }
             
         }
-        console.log(temp)
         setBingo(temp)
     }
     const hasVerticalBingo = (card,index) =>{
@@ -146,7 +145,7 @@ const Game = () => {
     const cache = {card,bingo,setCatch,resetCard,shiny}
 
     return ( 
-        <div>
+        <div className='relative'>
         <Navbar filterData={filterData} filterEdit={filterEdit}/>
         <Board options={cache} filters={filterData}/>
         <Sidebar card={playerCards}/>

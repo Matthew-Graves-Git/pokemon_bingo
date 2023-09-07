@@ -5,7 +5,7 @@ const http = require('http');
 // Spinning the http server and the WebSocket server.
 const server = http.createServer();
 const port = 443;
-const host = '192.168.1.228';
+const host = '192.168.1.65';
 const wsServer = new WebSocketServer({ server });
 let clients = {};
 let id = 0;
