@@ -5,7 +5,12 @@ import Navbar from './Navbar';
 
 
 const Game = () => {
-    const socket = useMemo(()=>new WebSocket("ws://192.168.1.65:443"),[]);
+    const socket = null;
+    try{
+        const socket = useMemo(()=>new WebSocket("ws://192.168.1.65:443"),[]);
+    }catch(e){
+        const socket = null;
+    }
     const [card, setCard] = useState([]);
     const [bingo, setBingo] = useState([]);
     const [playerCards, setPlayerCards] = useState({});
@@ -23,7 +28,7 @@ const Game = () => {
         for (let index = 0; index < 25; index++) {
             temp[index] = false
         }
-        if(socket.readyState)socket.send(temp)
+        if(socket && socket.readyState)socket.send(temp)
         setCard(temp)
         setBingo(temp)
     }
@@ -32,7 +37,7 @@ const Game = () => {
         const temp = [...card]
         temp[index] = state
         hasBingo(temp,state,index)
-        socket.send(temp)
+        if(socket) socket.send(temp)
         setCard(temp)
     }
 
@@ -122,24 +127,38 @@ const Game = () => {
     }      
     
     useEffect(() => {
-        socket.addEventListener("message", (event) => {
-            const temp = event.data.split(',')
-            const players = {...playerCards}
-            if(temp[0] === 'delete'){
-                console.log(temp[1])
-                delete players[temp[1]]
-            }else{
-                const id = temp.pop();
-                players[id] = temp;
+        if(socket){
+            try {
+                socket.addEventListener("message", (event) => {
+                    const temp = event.data.split(',')
+                    const players = {...playerCards}
+                    if(temp[0] === 'delete'){
+                        console.log(temp[1])
+                        delete players[temp[1]]
+                    }else{
+                        const id = temp.pop();
+                        players[id] = temp;
+                    }
+                    setPlayerCards(players)
+                });
+            } catch (error) {
+                
             }
-            setPlayerCards(players)
-        });
+        }
+        
     }, [playerCards,socket]);
 
     useEffect(() => {
-        socket.addEventListener("open", (event) => {
-            resetCard()
-        }); 
+        if(socket){
+            try {
+                socket.addEventListener("open", (event) => {
+                    resetCard()
+                });
+            } catch (error) {
+                
+            }
+        }
+         
     
     }, [socket]);
     const cache = {card,bingo,setCatch,resetCard,shiny}
